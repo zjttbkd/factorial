@@ -13,12 +13,14 @@ using namespace std;
 
 const unsigned int SLOT_MAX = 1000000000;
 
-string getFactorial(int m, int n)
+string getFactorial(int n)
 {
+    if(n < 0) return "";
+
     vector<unsigned long long> res;
     res.emplace_back(1);
 
-    for(int i=m; i<=n;)
+    for(int i=2; i<=n;)
     {
         unsigned long long j = i++;
         while(j < UINT_MAX && i<=n+1)
@@ -59,7 +61,7 @@ int main()
     int n = 3000;
     
     start = clock();
-    string res1 = getFactorial(2, n);
+    string res1 = getFactorial(n);
     finish = clock();
 
     cout << n << "'s factorial is: " << res1 << endl;
